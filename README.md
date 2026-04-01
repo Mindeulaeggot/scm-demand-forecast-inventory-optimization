@@ -4,6 +4,8 @@ This project uses retail sales data to forecast product demand and translate the
 
 Portfolio hub: [Mindeulaeggot/data-analytics-portfolio](https://github.com/Mindeulaeggot/data-analytics-portfolio)
 
+This project is positioned to support both data analytics internship applications and SCM internship applications because it combines model evaluation with supply chain decision-making.
+
 ## 1. Problem
 
 Retail operations face two costly risks:
@@ -67,6 +69,10 @@ Example results for `store_1 / item_1`:
 - It uses a large real-world style retail dataset.
 - It includes measurable model improvement.
 - It ends with business actions: safety stock and reorder point.
+
+For data analytics roles, it shows exploratory analysis, model comparison, and quantitative evaluation.
+
+For SCM roles, it shows how analytics can inform inventory planning, reorder decisions, and operational tradeoffs.
 
 ## Tech Stack
 
