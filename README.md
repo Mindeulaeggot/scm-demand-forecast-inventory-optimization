@@ -1,35 +1,45 @@
-# Demand Forecasting and Inventory Optimization for SCM
+# Demand Forecasting Project
 
-This project shows how retail sales data can be turned into practical supply chain decisions. It starts with exploratory analysis, builds forecasting models for a sample store-item series, and then converts the predicted demand into inventory planning metrics such as safety stock and reorder point.
+This project uses retail sales data to forecast product demand and translate the forecast into inventory decisions. Instead of stopping at model accuracy, it connects prediction output to safety stock and reorder point planning.
 
-## Project Snapshot
+## 1. Problem
 
-- Domain: supply chain management, retail analytics
-- Dataset: `data/retail_sales.csv`
+Retail operations face two costly risks:
+
+- understocking, which causes stockouts and lost sales
+- overstocking, which increases holding cost and waste
+
+The goal of this project is to predict future demand and show how forecasting can support better inventory planning.
+
+## 2. Data
+
+- Source file: `data/retail_sales.csv`
 - Time range: `2019-01-01` to `2023-12-31`
-- Scale: about `4.57 million` rows across `50` stores and `50` items
-- Focus case: `store_1 / item_1`
+- Scale: about `4.57 million` rows
+- Coverage: `50` stores and `50` items
+- Example forecasting case: `store_1 / item_1`
 
-## Business Goal
+## 3. Method
 
-Forecasting is only useful if it improves decisions. This project connects machine learning output to inventory policy by answering three practical questions:
-
-1. What demand patterns and seasonality appear in the sales data?
-2. Which forecasting approach performs best on a sample retail series?
-3. How can predicted demand be translated into reorder decisions?
-
-## Notebook Guide
-
-Review the notebooks in order on GitHub:
+The workflow is split into three notebooks:
 
 1. [01_eda.ipynb](./notebooks/01_eda.ipynb)
-   Explores dataset quality, time patterns, monthly behavior, and a sample demand series.
+   Explores sales patterns, seasonality, and data quality.
 2. [02_forecasting.ipynb](./notebooks/02_forecasting.ipynb)
-   Compares a baseline model, Linear Regression, and Random Forest using MAE and RMSE.
+   Compares baseline forecasting, Linear Regression, and Random Forest.
 3. [03_inventory_policy.ipynb](./notebooks/03_inventory_policy.ipynb)
-   Uses forecast output to calculate safety stock and reorder point recommendations.
+   Converts predicted demand into safety stock and reorder point recommendations.
 
-## Key Results
+Main methods used:
+
+- exploratory data analysis
+- feature engineering for time-based demand patterns
+- Linear Regression
+- Random Forest
+- MAE and RMSE for forecast evaluation
+- inventory policy logic using lead time and service level assumptions
+
+## 4. Result
 
 Example results for `store_1 / item_1`:
 
@@ -38,16 +48,32 @@ Example results for `store_1 / item_1`:
 | Baseline MAE | `11.73` |
 | Linear Regression MAE | `7.33` |
 | Random Forest MAE | `3.64` |
-| Lead Time Assumption | `7 days` |
-| Service Level Assumption | `~95%` |
+| Lead Time | `7 days` |
+| Service Level | `~95%` |
 | Safety Stock | `60.46` |
 | Reorder Point | `386.58` |
 
-## Why It Matters
+## 5. Insight
 
-- Shows an end-to-end analytics workflow instead of an isolated model.
-- Connects forecasting performance to inventory control decisions.
-- Keeps the example simple enough to review quickly while still reflecting an SCM use case.
+- The Random Forest model substantially outperformed the baseline forecast on the sample series.
+- Demand forecasting became more useful once it was converted into an inventory decision rule.
+- The project shows that analytics value comes not only from prediction quality, but from how the prediction changes an operational decision.
+
+## Why This Works As a Portfolio Project
+
+- It shows a clear business problem, not just a model.
+- It uses a large real-world style retail dataset.
+- It includes measurable model improvement.
+- It ends with business actions: safety stock and reorder point.
+
+## Tech Stack
+
+- Python
+- pandas
+- numpy
+- matplotlib
+- scikit-learn
+- Jupyter Notebook
 
 ## Repository Structure
 
@@ -64,35 +90,26 @@ scm-demand-forecast-inventory-optimization/
 `-- README.md
 ```
 
-## Tools
-
-- Python
-- pandas
-- numpy
-- matplotlib
-- scikit-learn
-- Jupyter Notebook
-
 ## How To Run
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Then execute the notebooks in this order:
+Then run the notebooks in this order:
 
 1. `notebooks/01_eda.ipynb`
 2. `notebooks/02_forecasting.ipynb`
 3. `notebooks/03_inventory_policy.ipynb`
 
-## Resume-Ready Highlights
+## Resume Bullet Version
 
-- Built an SCM-focused demand forecasting workflow using retail sales data and compared baseline, Linear Regression, and Random Forest models.
-- Reduced forecast error from `11.73` MAE with a baseline approach to `3.64` MAE with Random Forest on a sample store-item series.
-- Translated forecast output into inventory recommendations by calculating safety stock and reorder point under lead-time and service-level assumptions.
+- Built a retail demand forecasting project on `4.57M+` sales records and compared baseline, Linear Regression, and Random Forest models.
+- Reduced MAE from `11.73` to `3.64` on a sample store-item series.
+- Translated forecast output into inventory recommendations through safety stock and reorder point analysis.
 
-## Notes
+## Next Upgrade
 
-- The notebooks now contain executed outputs, so GitHub can render charts and results directly.
-- The dataset is tracked with Git LFS because of file size.
-- The modeling example is intentionally scoped to a single store-item case for clarity and review speed.
+- expand from one sample series to multiple store-item combinations
+- compare with stronger time-series-specific models
+- add cost-based inventory tradeoff analysis
