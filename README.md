@@ -2,6 +2,8 @@
 
 This project uses retail sales data to forecast product demand and translate the forecast into inventory decisions. Instead of stopping at model accuracy, it connects prediction output to safety stock and reorder point planning.
 
+Portfolio hub: [Mindeulaeggot/data-analytics-portfolio](https://github.com/Mindeulaeggot/data-analytics-portfolio)
+
 ## 1. Problem
 
 Retail operations face two costly risks:
