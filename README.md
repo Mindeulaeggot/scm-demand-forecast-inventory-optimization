@@ -1,5 +1,7 @@
 # Demand Forecasting for Supply Chain Optimization
 
+Data-driven demand forecasting project that shows how better predictions can support lower inventory risk and more efficient replenishment planning.
+
 This project uses retail sales data to forecast product demand and translate the forecast into inventory decisions. Instead of stopping at model accuracy, it connects prediction output to safety stock and reorder point planning.
 
 Portfolio hub: [Mindeulaeggot/data-analytics-portfolio](https://github.com/Mindeulaeggot/data-analytics-portfolio)
@@ -21,6 +23,7 @@ The goal of this project is to predict future demand and show how forecasting ca
 - reduce excess inventory by avoiding over-ordering against weak forecasts
 - support more disciplined replenishment planning through reorder point logic
 - connect data analysis to operating decisions instead of ending at model output
+- demonstrate how demand forecasting can be used in inventory control and supply planning workflows
 
 ## 3. Data
 
@@ -64,7 +67,11 @@ Example results for `store_1 / item_1`:
 | Safety Stock | `60.46` |
 | Reorder Point | `386.58` |
 
-The forecast error dropped from `11.73` MAE with the baseline model to `3.64` with Random Forest, showing that the final model captured demand patterns much more effectively on the sample series.
+The forecast error dropped from `11.73` MAE with the baseline model to `3.64` with Random Forest, a `69.0%` reduction in MAE.
+
+RMSE also improved from `15.71` to `4.52`, a `71.2%` reduction, which shows that the final model reduced larger prediction errors as well.
+
+This means the project did not stop at "modeling worked." It showed a measurable improvement in forecast quality that can support better reorder timing and inventory planning decisions.
 
 ## 6. Insight
 
@@ -72,6 +79,12 @@ The forecast error dropped from `11.73` MAE with the baseline model to `3.64` wi
 - Demand forecasting became more useful once it was converted into an inventory decision rule tied to safety stock and reorder point.
 - The project shows that analytics value comes not only from prediction quality, but from how the prediction changes inventory planning and replenishment decisions.
 - Seasonal and series-level demand variation suggests that a fixed inventory rule is weaker than a forecast-informed approach.
+
+## 7. Forecast Visualization
+
+Below is the actual versus predicted demand plot from the forecasting notebook for the sample series:
+
+![Actual vs predicted demand](./figures/actual_vs_predicted.png)
 
 ## Why This Works As a Portfolio Project
 
@@ -93,6 +106,8 @@ The main takeaway is not just that one model scored better. It is that forecast 
 - trigger replenishment at a data-informed reorder point
 
 That is the step that makes the project relevant to real SCM work rather than only coursework.
+
+In practical terms, this project suggests that demand-forecast-driven inventory planning can help reduce stockout risk, control excess inventory, and improve supply planning efficiency.
 
 ## Tech Stack
 
@@ -133,7 +148,7 @@ Then run the notebooks in this order:
 ## Resume Bullet Version
 
 - Built a retail demand forecasting project on `4.57M+` sales records and compared baseline, Linear Regression, and Random Forest models.
-- Reduced MAE from `11.73` to `3.64` on a sample store-item series.
+- Reduced MAE from `11.73` to `3.64` and RMSE from `15.71` to `4.52` on a sample store-item series.
 - Translated forecast output into inventory recommendations through safety stock and reorder point analysis.
 
 ## Next Upgrade
